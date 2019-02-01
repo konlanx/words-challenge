@@ -1,3 +1,8 @@
+ActionBar {
+	background-color: black;
+	color: white;
+}
+
 .home-panel{
 	vertical-align: center;
 	font-size: 20;
@@ -5,5 +10,9 @@
 }
 
 .word-list-view {
-	height: 500px;
+	height: 500;
+}
+
+.word-list-text {
+	font-size: 30;
 }

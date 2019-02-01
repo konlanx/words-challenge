@@ -10,13 +10,13 @@ StackLayout {
   opacity: 1.0;
 }
 
-.form {
-    background-color:white;
+ActionBar {
+    background-color: black;
+    color: white;
 }
 
-ActionBar {
-  background-color: black;
-  color: white;
+.form {
+    background-color:white;
 }
 
 .description-label {
