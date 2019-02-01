@@ -1,0 +1,12 @@
+<ActionBar title="Wörter raten" class="action-bar">
+</ActionBar>
+
+<FlexboxLayout>
+    <StackLayout class="form">
+        <Label textWrap="true" text="Wörter raten!" class="h2 description-label"></Label>
+        <Label textWrap="true" text="Wörter editieren oder ein Spiel starten?"
+            class="h2 description-label"></Label>
+        <Button text="Spiel starten" (tap)="sayHello()" class="btn btn-primary"></Button>
+        <Button text="Wörter bearbeiten" [nsRouterLink]="['/list']" pageTransition="slide" class="btn btn-manage"></Button>
+    </StackLayout>
+</FlexboxLayout>

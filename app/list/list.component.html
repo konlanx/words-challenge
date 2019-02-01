@@ -1,0 +1,18 @@
+<ActionBar title="List" class="action-bar">
+</ActionBar>
+
+<ScrollView class="page">
+    <StackLayout class="form">
+        <TextField hint="Neues Wort" [text]="newWord.value" (textChange)="onNewWordChange($event)"
+            class="input input-border"></TextField>
+        <Button text="Wort hinzufügen" (tap)="addWord()" class="btn btn-primary">
+        </Button>
+        <ListView [items]="wordList" (itemTap)="onItemTap($event)" class="word-list-view">
+            <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+                <StackLayout [class.odd]="odd" [class.even]="even">
+                    <Label [text]='item.value'></Label>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+</ScrollView>

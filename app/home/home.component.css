@@ -1,0 +1,29 @@
+FlexboxLayout {
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-image: url("~/images/start-screen-background.jpg");
+}
+StackLayout {
+  width: 300;
+  padding: 10 16;
+  opacity: 1.0;
+}
+
+.form {
+    background-color:white;
+}
+
+ActionBar {
+  background-color: black;
+  color: white;
+}
+
+.description-label {
+    color: black;
+    margin-bottom: 15;
+}
+
+.btn-manage {
+    background-color: white;
+}
