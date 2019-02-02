@@ -4,7 +4,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
-import { ListComponent } from "./list/list.component";
+import { WordListComponent } from "./wordList/wordList.component";
 
 @NgModule({
     bootstrap: [
@@ -17,7 +17,7 @@ import { ListComponent } from "./list/list.component";
     declarations: [
         AppComponent,
         HomeComponent,
-        ListComponent
+        WordListComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -8,7 +8,7 @@
     </Button>
 
 
-    <ListView [items]="wordList" (itemTap)="onWordListTap($event)" class="word-list-view list-group">
+    <ListView [items]="wordList.wordList" (itemTap)="onWordListTap($event)" class="word-list-view list-group">
         <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
             <StackLayout [class.odd]="odd" [class.even]="even">
                 <Label class="word-list-text" [text]='item.value'></Label>

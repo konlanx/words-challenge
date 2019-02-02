@@ -20,6 +20,6 @@ export class HomeComponent implements OnInit {
     }
 
     editList(): void {
-        this.router.navigate["/list"];
+        this.router.navigate["/wordList"];
     }
 }

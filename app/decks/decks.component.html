@@ -1,0 +1,9 @@
+<ActionBar title="Alle Decks" class="action-bar">
+</ActionBar>
+
+<StackLayout orientation="vertical">
+    <TextField hint="Neues Deck" [text]="newDeck.value" (textChange)="onNewDeckChange($event)"
+               class="input input-border"></TextField>
+    <Button text="Deck hinzufügen" (tap)="addWord()" class="btn btn-primary">
+    </Button>
+</StackLayout>
