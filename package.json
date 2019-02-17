@@ -1,8 +1,8 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "description": "WordsChallenge by tihansen",
+  "license": "NO LICENSE YET",
+  "readme": "NO README",
+  "repository": "https://github.com/tihansen/words-challenge",
   "nativescript": {
     "id": "org.nativescript.blankng",
     "tns-android": {
@@ -28,6 +28,7 @@
     "nativescript-angular": "7.1.0",
     "nativescript-background-http": "3.3.1",
     "nativescript-camera": "4.1.1",
+    "nativescript-cardview": "^3.1.1",
     "nativescript-fresco": "5.1.0",
     "nativescript-geolocation": "4.3.1",
     "nativescript-imagepicker": "6.0.5",

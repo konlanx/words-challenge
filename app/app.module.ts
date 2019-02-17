@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { WordListComponent } from "./wordList/wordList.component";
+import {DecksComponent} from "~/decks/decks.component";
 
 @NgModule({
     bootstrap: [
@@ -17,7 +18,8 @@ import { WordListComponent } from "./wordList/wordList.component";
     declarations: [
         AppComponent,
         HomeComponent,
-        WordListComponent
+        WordListComponent,
+        DecksComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
