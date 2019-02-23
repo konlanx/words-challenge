@@ -41,9 +41,14 @@ export class DecksComponent implements OnInit {
     addDeck() {
         if ('' !== this.newDeck.name && '' !== this.newDeck.name.trim()) {
             this.database.addDeck(this.newDeck);
-            this.newDeck = new Deck('', new WordList([]), '', 0);
             this.loadDecks();
+            this.newDeck = new Deck('', new WordList([]), '', 0);
         }
+    }
+
+    removeDeck(deck: Deck) {
+        this.database.removeDeck(deck);
+        this.loadDecks();
     }
 
     private loadDecks(): void {

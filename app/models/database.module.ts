@@ -38,7 +38,11 @@ export class Database {
     }
 
     removeDeck(deck: Deck): void {
-
+        this.database.execSQL("DELETE FROM decks WHERE id = ?", deck.id).then(id => {
+           console.log('Deleted', id);
+        }, error => {
+            console.log('DELETE ERROR', error);
+        });
     }
 
     public fetch(decks: Array<Deck>): Array<Deck> {
