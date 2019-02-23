@@ -1,9 +1,15 @@
 .deck-title {
     margin-left: 10;
+    margin-right: 10;
     font-size: 15;
     font-weight: bold;
+    text-overflow: ellipsis;
+    max-width: 300;
 }
 
 .deck-description {
     margin-left: 10;
+    margin-right: 10;
+    text-overflow: ellipsis;
+    max-width: 300;
 }

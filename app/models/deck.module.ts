@@ -1,4 +1,3 @@
-import {WordList} from "~/models/wordList.module";
 import {Models} from "~/models/Models";
 import IDeck = Models.IDeck;
 
@@ -8,12 +7,12 @@ import IDeck = Models.IDeck;
  * A deck holds a wordList of words
  */
 export class Deck implements IDeck{
-    wordList: WordList;
+    wordList: string[];
     name: string;
     description: string;
     id: number;
 
-    constructor(name: string, wordList: WordList, description: string, id: number) {
+    constructor(name: string, wordList: string[], description: string, id: number) {
         this.name = name;
         this.wordList = wordList;
         this.description = description;
@@ -21,7 +20,7 @@ export class Deck implements IDeck{
     }
 
     getAmountOfWords(): number {
-        return this.wordList.getAmountOfWords();
+        return this.wordList.length;
     }
 
 

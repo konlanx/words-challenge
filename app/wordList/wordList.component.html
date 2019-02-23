@@ -2,16 +2,16 @@
 </ActionBar>
 
 <StackLayout orientation="vertical">
-    <TextField hint="Neues Wort" [text]="newWord.value" (textChange)="onNewWordChange($event)"
+    <TextField hint="Neues Wort" [text]="newWord" (textChange)="onNewWordChange($event)"
                class="input input-border"></TextField>
     <Button text="Wort hinzufügen" (tap)="addWord()" class="btn btn-primary">
     </Button>
 
 
-    <ListView [items]="wordList.wordList" (itemTap)="onWordListTap($event)" class="word-list-view list-group">
+    <ListView [items]="wordList" (itemTap)="onWordListTap($event)" class="word-list-view list-group">
         <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
             <StackLayout [class.odd]="odd" [class.even]="even">
-                <Label class="word-list-text" [text]='item.value'></Label>
+                <Label class="word-list-text" [text]='item'></Label>
             </StackLayout>
         </ng-template>
     </ListView>

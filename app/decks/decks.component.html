@@ -1,23 +1,26 @@
-<ActionBar title="Alle Decks" class="action-bar">
-</ActionBar>
+<Page loaded="onPageLoaded()">
+    <ActionBar title="Alle Decks" class="action-bar">
+    </ActionBar>
 
-<StackLayout orientation="vertical">
-    <TextField hint="Neues Deck" [text]="newDeck.name" (textChange)="onNewDeckChange($event)"
-               class="input input-border"></TextField>
-    <Button text="Deck hinzufügen" (tap)="addDeck()" class="btn btn-primary">
-    </Button>
+    <StackLayout orientation="vertical">
+        <TextField hint="Neues Deck" [text]="newDeck.name" (textChange)="onNewDeckChange($event)"
+                   class="input input-border"></TextField>
+        <Button text="Deck hinzufügen" (tap)="addDeck()" class="btn btn-primary">
+        </Button>
 
-    <ScrollView>
-        <StackLayout>
-            <div *ngFor="let deck of decks">
-                <CardView class="cardStyle" margin="10" elevation="40" radius="1" >
-                    <GridLayout rows="20,40,30,60" columns="320">
-                        <Label class="deck-title" horizontalAlignment="left" [text]="deck.name" row="1" col="1"></Label>
-                        <Label class="deck-description" horizontalAlignment="left" [text]="deck.description" row="2" col="1"></Label>
-                        <button text="Ändern" row="3" col="1" (tap)="removeDeck(deck)"></button>
-                    </GridLayout>
-                </CardView>
-            </div>
-        </StackLayout>
-    </ScrollView>
-</StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <div *ngFor="let deck of database.decks">
+                    <CardView class="cardStyle" margin="10" elevation="40" radius="1" >
+                        <GridLayout rows="20,40,30,60" columns="100, 100, *">
+                            <Label class="deck-title" horizontalAlignment="left" [text]="deck.name" row="1" col="0" colSpan="3"></Label>
+                            <Label class="deck-description" horizontalAlignment="left" [text]="deck.description" row="2" col="0" colSpan="3"></Label>
+                            <button text="Ändern" row="3" col="0" colSpan="2" (tap)="changeDeck(deck)"></button>
+                            <button text="Entfernen" row="3" col="2" (tap)="removeDeck(deck)" style="background-color: darkred; color:white;"></button>
+                        </GridLayout>
+                    </CardView>
+                </div>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</Page>

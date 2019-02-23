@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import { NgModule } from "@angular/core";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { Word } from "~/models/word.module";
 import * as dialogs from "tns-core-modules/ui/dialogs";
-import {WordList} from "~/models/wordList.module";
+import {ActivatedRoute} from "@angular/router";
+import {Database} from "~/models/database.module";
+import {DecksComponent} from "~/decks/decks.component";
 
 @NgModule({
     imports: [
@@ -16,56 +17,70 @@ import {WordList} from "~/models/wordList.module";
     templateUrl: "./wordList.component.html",
     styleUrls: ['./wordList.component.css']
 })
-export class WordListComponent implements OnInit {
+export class WordListComponent implements OnInit, OnDestroy {
 
-    wordList: WordList;
-    newWord: Word;
+    newWord: string;
 
-    constructor() {
-        this.wordList = new WordList([]);
-        this.newWord = new Word('');
+    wordList: string[];
+    id: Number;
+    parent: DecksComponent;
+
+    constructor(private route: ActivatedRoute, private database: Database) {
+        this.route.queryParams.subscribe(params => {
+            this.wordList = params['wordList'];
+            this.id = params['id'];
+            this.parent = params['parent'];
+        });
+
+        this.newWord = '';
     }
 
     ngOnInit(): void {
 
     }
 
+    ngOnDestroy(): void {
+        console.log('Destroying');
+        this.database.fetch();
+    }
+
     onNewWordChange(args: any) {
-        this.newWord.value = args.object.text;
+            console.log( args.object.text);
+        this.newWord = args.object.text;
     }
 
     addWord(): void {
-        if (this.newWord.value === '') {
+        if (this.newWord === '') {
             // If word is empty, do nothing
             return;
         }
 
-        this.wordList.addWord(this.newWord);
-        this.newWord = new Word('');
-
+        this.wordList.push(this.newWord);
         this.saveWords();
+
+        this.newWord = '';
     }
 
     saveWords(): void {
-        // Empty for now
+        this.database.editWordList(this.wordList, this.id);
     }
 
     onWordListTap($event): void {
         let index = $event.index;
         let wordList = this.wordList;
-        let word = wordList.getWordOnIndex(index);
+        let word = wordList[index];
         let parent = this;
         dialogs.prompt({
             title: "Wort bearbeiten",
             message: "Wort ändern oder löschen",
             okButtonText: "Speichern",
             cancelButtonText: "Löschen",
-            defaultText: word.value
+            defaultText: word
         }).then(function (result) {
             if(result.result === true) {
-                word.value = result.text;
+                word = result.text;
             } else {
-                wordList.removeWordOnIndex(index);
+                wordList.splice(index, 1);
             }
             parent.saveWords();
         });

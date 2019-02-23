@@ -4,9 +4,9 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { registerElement } from 'nativescript-angular/element-registry';
 import { CardView } from 'nativescript-cardview';
 import {Deck} from "~/models/deck.module";
-import {WordList} from "~/models/wordList.module";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import {Database} from "~/models/database.module";
+import {NavigationExtras, Router} from "@angular/router";
 
 registerElement('CardView', () => CardView);
 
@@ -23,15 +23,9 @@ registerElement('CardView', () => CardView);
 })
 export class DecksComponent implements OnInit {
     newDeck: Deck;
-    decks: Deck[];
 
-    private database: Database;
-
-    constructor() {
-        this.newDeck = new Deck("", new WordList([]), "", 0);
-
-        this.decks = [];
-        this.database = new Database();
+    constructor(private router: Router, public database: Database) {
+        this.newDeck = new Deck("", [], "", 0);
     }
 
     ngOnInit(): void {
@@ -42,17 +36,38 @@ export class DecksComponent implements OnInit {
         if ('' !== this.newDeck.name && '' !== this.newDeck.name.trim()) {
             this.database.addDeck(this.newDeck);
             this.loadDecks();
-            this.newDeck = new Deck('', new WordList([]), '', 0);
+            this.newDeck = new Deck('', [], '', 0);
         }
     }
 
     removeDeck(deck: Deck) {
-        this.database.removeDeck(deck);
-        this.loadDecks();
+        let parent = this;
+        dialogs.confirm({
+            title: deck.name,
+            message: "Sicher löschen?",
+            okButtonText: "Löschen",
+            cancelButtonText: "Abbrechen"
+        }).then(function (result) {
+            if(result === true) {
+                parent.database.removeDeck(deck);
+                parent.loadDecks();
+            }
+        });
     }
 
-    private loadDecks(): void {
-        this.database.fetch(this.decks);
+    changeDeck(deck: Deck) {
+        console.log(deck.wordList);
+        let navigationExtras: NavigationExtras = {
+            queryParams: {
+                'id': deck.id,
+                'wordList': deck.wordList
+            }
+        };
+        this.router.navigate(['wordList'], navigationExtras);
+    }
+
+    public loadDecks(): void {
+        this.database.fetch();
 
     }
 
