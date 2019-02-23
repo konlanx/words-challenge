@@ -4,8 +4,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { Word } from "~/models/word.module";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import {WordList} from "~/models/wordList.module";
-import {Database} from "~/models/database.module";
-import {Deck} from "~/models/deck.module";
 
 @NgModule({
     imports: [

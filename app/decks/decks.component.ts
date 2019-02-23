@@ -5,6 +5,8 @@ import { registerElement } from 'nativescript-angular/element-registry';
 import { CardView } from 'nativescript-cardview';
 import {Deck} from "~/models/deck.module";
 import {WordList} from "~/models/wordList.module";
+import * as dialogs from "tns-core-modules/ui/dialogs";
+import {Database} from "~/models/database.module";
 
 registerElement('CardView', () => CardView);
 
@@ -23,26 +25,33 @@ export class DecksComponent implements OnInit {
     newDeck: Deck;
     decks: Deck[];
 
-    constructor() {
-        this.newDeck = new Deck("", new WordList([]), "", 1);
+    private database: Database;
 
-        // For testing
-        let deck1 = new Deck("test1", null, "testDeck", 1);
-        let deck2 = new Deck("test2", null, "anderes testDeck", 2);
+    constructor() {
+        this.newDeck = new Deck("", new WordList([]), "", 0);
 
         this.decks = [];
-        this.decks.push(deck1, deck2);
+        this.database = new Database();
     }
 
     ngOnInit(): void {
+        this.loadDecks();
+    }
+
+    addDeck() {
+        if ('' !== this.newDeck.name && '' !== this.newDeck.name.trim()) {
+            this.database.addDeck(this.newDeck);
+            this.newDeck = new Deck('', new WordList([]), '', 0);
+            this.loadDecks();
+        }
+    }
+
+    private loadDecks(): void {
+        this.database.fetch(this.decks);
 
     }
 
-    addWord() {
-        
-    }
-
-    onNewDeckChange($event) {
-        
+    onNewDeckChange(args: any) {
+        this.newDeck.name =  args.object.text;
     }
 }

@@ -4,16 +4,20 @@
 <StackLayout orientation="vertical">
     <TextField hint="Neues Deck" [text]="newDeck.name" (textChange)="onNewDeckChange($event)"
                class="input input-border"></TextField>
-    <Button text="Deck hinzufügen" (tap)="addWord()" class="btn btn-primary">
+    <Button text="Deck hinzufügen" (tap)="addDeck()" class="btn btn-primary">
     </Button>
 
-    <div *ngFor="let deck of decks">
-        <CardView class="cardStyle" margin="10" elevation="40" radius="1" >
-            <GridLayout rows="20,40,30,60" columns="auto">
-                <Label class="deck-title" horizontalAlignment="left" [text]="deck.name" row="1" col="1"></Label>
-                <Label class="deck-description" horizontalAlignment="left" [text]="deck.description" row="2" col="1"></Label>
-                <button text="Ändern" row="3" col="1"></button>
-            </GridLayout>
-        </CardView>
-    </div>
+    <ScrollView>
+        <StackLayout>
+            <div *ngFor="let deck of decks">
+                <CardView class="cardStyle" margin="10" elevation="40" radius="1" >
+                    <GridLayout rows="20,40,30,60" columns="320">
+                        <Label class="deck-title" horizontalAlignment="left" [text]="deck.name" row="1" col="1"></Label>
+                        <Label class="deck-description" horizontalAlignment="left" [text]="deck.description" row="2" col="1"></Label>
+                        <button text="Ändern" row="3" col="1"></button>
+                    </GridLayout>
+                </CardView>
+            </div>
+        </StackLayout>
+    </ScrollView>
 </StackLayout>
