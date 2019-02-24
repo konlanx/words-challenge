@@ -68,17 +68,16 @@ export class WordListComponent implements OnInit, OnDestroy {
     onWordListTap($event): void {
         let index = $event.index;
         let wordList = this.wordList;
-        let word = wordList[index];
         let parent = this;
         dialogs.prompt({
             title: "Wort bearbeiten",
             message: "Wort ändern oder löschen",
             okButtonText: "Speichern",
             cancelButtonText: "Löschen",
-            defaultText: word
+            defaultText: wordList[index]
         }).then(function (result) {
             if(result.result === true) {
-                word = result.text;
+                wordList[index] = result.text;
             } else {
                 wordList.splice(index, 1);
             }
