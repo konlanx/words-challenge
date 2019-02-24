@@ -40,12 +40,10 @@ export class WordListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        console.log('Destroying');
         this.database.fetch();
     }
 
     onNewWordChange(args: any) {
-            console.log( args.object.text);
         this.newWord = args.object.text;
     }
 

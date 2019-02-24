@@ -1,0 +1,15 @@
+<ActionBar title="Spieleinstellungen" class="action-bar">
+</ActionBar>
+
+<StackLayout orientation="vertical">
+    <GridLayout rows="50,50,50,50" columns="100, *">
+        <Label text='Rundenlänge: ' row="1" col="0"></Label>
+        <DropDown #dd
+                  backroundColor="red"
+                  [items]="roundLengths"
+                  (selectedIndexChanged)="onChangeDropDown($event)"
+                  row="1"
+                  col="1"></DropDown>
+    </GridLayout>
+
+</StackLayout>

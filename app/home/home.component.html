@@ -4,9 +4,9 @@
 <FlexboxLayout>
     <StackLayout class="form">
         <Label textWrap="true" text="Wörter raten!" class="h2 description-label"></Label>
-        <Label textWrap="true" text="Wörter editieren oder ein Spiel starten?"
+        <Label textWrap="true" text="Ein Spiel starten oder Wörter editieren?"
             class="h2 description-label"></Label>
-        <Button text="Spiel starten" (tap)="sayHello()" class="btn btn-primary"></Button>
+        <Button text="Spiel starten" [nsRouterLink]="['/gameSetup']" class="btn btn-primary"></Button>
         <Button text="Decks bearbeiten" [nsRouterLink]="['/decks']" pageTransition="slide" class="btn btn-manage"></Button>
     </StackLayout>
 </FlexboxLayout>

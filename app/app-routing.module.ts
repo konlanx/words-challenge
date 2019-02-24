@@ -4,12 +4,14 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { WordListComponent } from "./wordList/wordList.component";
 import { HomeComponent } from "./home/home.component";
 import {DecksComponent} from "~/decks/decks.component";
+import {GameSetupComponent} from "~/gameSetup/gameSetup.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", component: HomeComponent},
     { path: "wordList", component: WordListComponent },
-    { path: "decks", component: DecksComponent }
+    { path: "decks", component: DecksComponent },
+    { path: "gameSetup", component: GameSetupComponent}
 ];
 
 @NgModule({

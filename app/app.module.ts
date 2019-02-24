@@ -7,6 +7,8 @@ import { HomeComponent } from "./home/home.component";
 import { WordListComponent } from "./wordList/wordList.component";
 import {DecksComponent} from "~/decks/decks.component";
 import {Database} from "~/models/database.module";
+import {GameSetupComponent} from "~/gameSetup/gameSetup.component";
+import {DropDownModule} from "nativescript-drop-down/angular";
 
 @NgModule({
     bootstrap: [
@@ -14,13 +16,15 @@ import {Database} from "~/models/database.module";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        DropDownModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         WordListComponent,
-        DecksComponent
+        DecksComponent,
+        GameSetupComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
